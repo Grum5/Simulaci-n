@@ -1,6 +1,6 @@
 # Serial Test en Python (Two-Bit Test)  
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)  
+![Python](https://img.shields.io/badge/Python-3.13.2-blue.svg)  
 ![Status](https://img.shields.io/badge/Estado-Completado-success)  
 
 ## Descripción  
