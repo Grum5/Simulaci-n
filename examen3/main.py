@@ -7,27 +7,33 @@ from runner.entropy_calculator import EntropyCalculator
 
 if __name__ == '__main__':
 
+    # Creando instancias necesarias
     image_handler = ImageLoader()
     e = Encryption()
     h = HistogramAnalyzer()
 
+    # Convirtiendo la imagen a un arreglo RGB
     image_array = image_handler.image_to_array("imagen.png")
 
+    # Encriptar el arreglo de imagen en los diferentes modelos
     tinkerbell_encrypt = e.encrypt_tinkerbell(image_array)
     henon_encrypt = e.encrypt_henon(image_array)
     chen_encrypt = e.encrypt_chen(image_array)
     logistico_encrypt = e.encrypt_logistico(image_array)
 
+    # Guardar cada modelo generado en una imagen nueva
     image_handler.save_image(tinkerbell_encrypt, "tinkerbell.png")
     image_handler.save_image(henon_encrypt, "henon.png")
     image_handler.save_image(chen_encrypt, "chen.png")
     image_handler.save_image(logistico_encrypt, "logistico.png")
 
+    # Generar los histogramas de cada modelo por canal
     h.generate_histograms(tinkerbell_encrypt, "h_tinkerbell")
     h.generate_histograms(henon_encrypt, "h_henon")
     h.generate_histograms(chen_encrypt, "h_chen")
     h.generate_histograms(logistico_encrypt, "h_logistico")
 
+    # Calcular e imprimir en pantalla los resultados de la entropia
     tinkerbell_result = EntropyCalculator.calculate(tinkerbell_encrypt)
     henon_result = EntropyCalculator.calculate(henon_encrypt)
     chen_result = EntropyCalculator.calculate(chen_encrypt)
